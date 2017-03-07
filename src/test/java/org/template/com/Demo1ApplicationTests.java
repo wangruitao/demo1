@@ -27,13 +27,13 @@ public class Demo1ApplicationTests {
 	@Rollback
 	public void findByName() throws Exception {
 		Users u = testMapper.queryEntry(1L);
-		Assert.assertEquals("王瑞涛", u.getUserName());
+		Assert.assertEquals("王瑞涛", u.getName());
 	}
 	
 	@Test
 	@Rollback
 	public void getOne() throws Exception {
 		Users u = testMapper.getOne(1L);
-		Assert.assertEquals("王瑞涛", u.getUserName());
+		Assert.assertEquals("王瑞涛", u.getName());
 	}
 }

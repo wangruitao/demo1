@@ -10,4 +10,9 @@ public class LoginController {
 	public String login() {
 		return "login";
 	}
+	
+	@RequestMapping(path="/login_out")
+	public String logout() {
+		return "login";
+	}
 }
