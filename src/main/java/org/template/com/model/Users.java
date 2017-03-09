@@ -7,11 +7,9 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 
 import lombok.Data;
 
-@Component
 @Data
 public class Users implements UserDetails{
 
@@ -42,7 +40,7 @@ public class Users implements UserDetails{
 	@Override
 	public String getPassword() {
 		
-		return this.getPassword();
+		return this.getUserPassword();
 	}
 	@Override
 	public String getUsername() {

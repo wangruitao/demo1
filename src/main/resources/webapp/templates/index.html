@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Spring Security入门</title>
+<script type="text/javascript" src="${basePath}/assets/js/jquery.min.js"></script>
+<link href="${basePath}/assets/css/comm.css" rel="stylesheet" style="text/css" />  
+<script type="text/javascript">
+var root = "${basePath}";
+function oncl() {
+	 $.ajax({
+         type: "get",
+         url: root + "/query/1.json",
+         success: function(data){
+        	 console.log(data);
+        	 $("#divdata").html(data.id + "---" + data.name + "----" + data.logName + "----" + data.userPassword);
+         }
+     });
+}
+</script>
+</head>
+<body>
+	<h1>欢迎使用Spring Security!</h1>
+	<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	<p>
+		点击 <a href="${basePath}/queryid/1.html">这里</a> 打个招呼吧<br/>
+		<button onclick="oncl()" value="点我吧">点我吧</button>
+		
+	</p>
+	<p id="divdata"></p>
+</body>
+</html>
