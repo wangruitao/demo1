@@ -10,4 +10,10 @@ public interface UserService extends  UserDetailsService {
 	public boolean insert(String name);
 
 	public Users queryEntry(Long id);
+	
+	public boolean delete(Long id);
+
+	public Long insertModel(Users us);
+	
+	public Users update(Users us);
 }

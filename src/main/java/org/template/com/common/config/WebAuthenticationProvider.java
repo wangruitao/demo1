@@ -23,6 +23,7 @@ public class WebAuthenticationProvider implements AuthenticationProvider {
 	@Autowired
 	private UserService userService;
 
+	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
@@ -67,4 +68,5 @@ public class WebAuthenticationProvider implements AuthenticationProvider {
 		return UsernamePasswordAuthenticationToken.class.equals(authentication);
 	}
 
+	
 }

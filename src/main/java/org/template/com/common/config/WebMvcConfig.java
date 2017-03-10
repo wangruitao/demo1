@@ -22,11 +22,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		registry.addViewController("/login").setViewName("login");
 	}
 
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/assets/**").addResourceLocations("classpath:/webapp/assets/");
-	}
-
 	@Bean
 	public CommonInterceptor timeInterceptor() {
 		return new CommonInterceptor();
@@ -37,6 +32,13 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		
 		registry.addInterceptor(timeInterceptor());
 	}
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+	}
+	
+	
 
 	@Override
 	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
@@ -60,7 +62,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		registration.addUrlMappings("*.xml");
 		registration.addUrlMappings("*.html");
 		registration.addUrlMappings("*.htm");
-		registration.addUrlMappings("/assets/*");
+		registration.addUrlMappings("*.js");
+		registration.addUrlMappings("*.css");
+		registration.addUrlMappings("*.jpg");
+		registration.addUrlMappings("*.png");
+		registration.addUrlMappings("*.jif");
 		return registration;
 	}
 	

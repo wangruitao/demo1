@@ -1,6 +1,5 @@
 package org.template.com.controller;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.template.com.model.Users;
 import org.template.com.service.UserService;
-import org.template.com.vo.UserVo;
 
 @Controller
 public class HelloController extends BaseController {
@@ -39,20 +37,14 @@ public class HelloController extends BaseController {
 	
 	@RequestMapping(value = "/query/{id}")
 	@ResponseBody
-	public UserVo queryEntry(ModelMap model,@PathVariable("id") Long id) {
-		Users u = userService.queryEntry(id);
-		UserVo uv = new UserVo();
-		BeanUtils.copyProperties(u, uv);
-		return uv;
+	public Users queryEntry(ModelMap model,@PathVariable("id") Long id) {
+		return userService.queryEntry(id);
 	}
 	
 	@RequestMapping(value = "/query1/{id}")
 	@ResponseBody
-	public UserVo queryEntry1(ModelMap model,@PathVariable("id") Long id) {
-		Users u = userService.queryEntry(id);
-		UserVo uv = new UserVo();
-		BeanUtils.copyProperties(u, uv);
-		return uv;
+	public Users queryEntry1(ModelMap model,@PathVariable("id") Long id) {
+		return userService.queryEntry(id);
 	}
 	
 	@RequestMapping(value = "/queryid/{id}")
@@ -61,4 +53,34 @@ public class HelloController extends BaseController {
 		return "single";
 	}
 
+	@RequestMapping(value = "/delete/{id}")
+	public boolean deleteById(@PathVariable("id") Long id) {
+		return userService.delete(id);
+	}
+	
+	@RequestMapping(value = "/imodel")
+	@ResponseBody
+	public Users insertModel() {
+		Users us = new Users();
+		us.setLogName("ces");
+		us.setName("测试用的");
+		us.setUserLevel(0);
+		us.setUserLoc(9);
+		us.setUserPassword("ceshiyongd");
+		Long id = userService.insertModel(us);
+		us.setId(id);
+		return us;
+	}
+	
+	@RequestMapping(value = "/update")
+	@ResponseBody
+	public Boolean update() {
+		Users us = new Users();
+		us.setId(19L);
+		us.setName("测试王瑞涛是的，就是这样的");
+		us.setUserLevel(0);
+		us.setUserLoc(120);
+		us.setUserPassword("ceshiyongd");
+		return userService.update(us) == null ? false : true;
+	}
 }

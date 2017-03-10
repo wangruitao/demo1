@@ -1,5 +1,6 @@
 package org.template.com.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
@@ -29,4 +30,10 @@ public interface UserMapper {
 	
 	public Users loadUserByUsername(String username);
 
+	@Delete("delete from users where id=#{id}")
+	public int delete(@Param("id") Long id);
+
+	public long insertUser(Users u);
+
+	public int update(Users us);
 }
