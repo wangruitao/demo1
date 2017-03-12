@@ -38,6 +38,7 @@ public class HelloController extends BaseController {
 	@RequestMapping(value = "/query/{id}")
 	@ResponseBody
 	public Users queryEntry(ModelMap model,@PathVariable("id") Long id) {
+//		int i = 1/0;
 		return userService.queryEntry(id);
 	}
 	
@@ -50,6 +51,7 @@ public class HelloController extends BaseController {
 	@RequestMapping(value = "/queryid/{id}")
 	public String queryById(ModelMap model, @PathVariable("id") Long id) {
 		model.put("us", userService.queryEntry(id));
+//		int i = 1/0;
 		return "single";
 	}
 

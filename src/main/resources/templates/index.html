@@ -10,6 +10,7 @@ function oncl() {
 	 $.ajax({
          type: "get",
          url: root + "/query/19.json",
+         contentType: "application/json; charset=utf-8",
          success: function(data){
         	 console.log(data);
         	 $("#divdata").html(data.id + "---" + data.name + "----" + data.logName + "----" + data.userPassword);
